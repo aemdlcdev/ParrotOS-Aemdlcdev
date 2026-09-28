@@ -9,6 +9,11 @@ required=(
   scripts/targetctl scripts/network-status.sh scripts/vpn-status.sh
 )
 for path in "${required[@]}"; do [[ -s $root/$path ]] || { printf 'Falta: %s\n' "$path" >&2; exit 1; }; done
+source "$root/metadata/versions.conf"
+[[ $NERD_FONT_SHA256 =~ ^[0-9a-fA-F]{64}$ ]] || {
+  printf 'Checksum de Nerd Fonts ausente o inválido\n' >&2
+  exit 1
+}
 needle='Balth''ael'
 grep -Rq --exclude='FASE-1-INVENTARIO-FUNCIONAL.md' --exclude='README.md' "$needle" "$root" && {
   printf 'Se encontró branding ajeno fuera de las menciones autorizadas\n' >&2
