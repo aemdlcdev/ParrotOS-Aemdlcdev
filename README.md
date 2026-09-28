@@ -4,7 +4,7 @@ Entorno BSPWM modular para Parrot OS 7.3, construido para convivir con el escrit
 
 El proyecto instala componentes desde los repositorios activos de Parrot/Debian siempre que sea posible. No cambia fuentes APT, no reemplaza el escritorio existente y no distribuye binarios, fuentes o fondos de terceros.
 
-> Estado: versión inicial de la Fase 3. Debe validarse en una máquina o VM Parrot OS 7.3 antes de considerarse estable.
+> Estado: candidato inicial con implementación y auditorías clean-room completadas. Debe validarse en una máquina o VM Parrot OS 7.3 antes de considerarse estable.
 
 ## Capturas
 
