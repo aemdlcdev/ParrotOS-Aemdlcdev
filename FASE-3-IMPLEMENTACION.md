@@ -12,7 +12,7 @@ Estado: implementación inicial completa; pendiente de validación sobre Parrot 
 - APT-first con comprobación de paquetes instalados y disponibles.
 - Backups, logs, manifiesto con checksum y bloqueo concurrente.
 - BSPWM, SXHKD, Polybar, Picom, Kitty, Rofi, Zsh y Neovim.
-- Powerlevel10k fijado y Oh My Zsh opcional fijado a commit.
+- Powerlevel10k fijado y Oh My Zsh fijado a commit, ambos incluidos por el launcher completo.
 - Descarga verificada de JetBrainsMono Nerd Font.
 - Temas originales Nocturne y Daybreak.
 - Red, VPN genérica, batería condicional y target en Polybar.

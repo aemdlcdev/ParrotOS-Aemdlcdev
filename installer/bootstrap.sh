@@ -1,18 +1,13 @@
 #!/usr/bin/env bash
 
-source "$PROJECT_ROOT/installer/menu.sh"
-
 aem_usage() {
   cat <<EOF
 Uso: ./install.sh [opciones]
-  --profile NOMBRE       full, desktop, shell, tools, pentest o minimal
-  --components LISTA     lista separada por comas
-  --theme NOMBRE         nocturne o daybreak
-  --dry-run              mostrar acciones sin aplicarlas
-  --yes                  aceptar el plan sin preguntar
-  --skip-apt-update      no actualizar los índices APT
-  --allow-debian-13      habilitar soporte experimental
-  --force-unsupported    continuar bajo responsabilidad del usuario
+  --dry-run   mostrar todo el plan sin modificar el sistema
+  --yes       omitir la confirmación final
+  --help      mostrar esta ayuda
+
+Sin opciones instala el entorno completo con el tema Nocturne.
 EOF
 }
 
@@ -51,49 +46,36 @@ aem_confirm_plan() {
 }
 
 aem_main_install() {
-  local profile='' explicit='' theme='nocturne' allow_debian=0 force=0 apt_update=1
   while (($#)); do
     case "$1" in
-      --profile) [[ $# -ge 2 ]] || aem_die "Falta el perfil"; profile=$2; shift 2 ;;
-      --components) [[ $# -ge 2 ]] || aem_die "Faltan componentes"; explicit=${2//,/ }; shift 2 ;;
-      --theme) [[ $# -ge 2 ]] || aem_die "Falta el tema"; theme=$2; shift 2 ;;
       --dry-run) AEM_DRY_RUN=1; shift ;;
       --yes) AEM_ASSUME_YES=1; shift ;;
-      --skip-apt-update) apt_update=0; shift ;;
-      --allow-debian-13) allow_debian=1; shift ;;
-      --force-unsupported) force=1; shift ;;
       -h|--help) aem_usage; return ;;
       *) aem_die "Opción desconocida: $1" ;;
     esac
   done
-  [[ $theme == nocturne || $theme == daybreak ]] || aem_die "Tema desconocido: $theme"
   aem_require_command getent
   aem_require_command dpkg
   aem_require_command flock
   aem_detect_platform
-  aem_assert_supported_platform "$allow_debian" "$force"
+  aem_assert_supported_platform 0 0
   aem_resolve_target_user
   aem_init_xdg_paths
   aem_prepare_runtime
   source "$PROJECT_ROOT/metadata/components.conf"
-  if [[ -n $explicit ]]; then
-    AEM_COMPONENTS=$explicit
-  else
-    [[ -n $profile ]] || profile=$(aem_choose_profile)
-    local profile_key="PROFILE_$profile"
-    [[ -n ${!profile_key:-} ]] || aem_die "Perfil desconocido: $profile"
-    AEM_COMPONENTS=${!profile_key}
-  fi
-  export AEM_THEME=$theme AEM_COMPONENTS
+  AEM_COMPONENTS=$INSTALL_COMPONENTS
+  AEM_THEME=nocturne
+  export AEM_THEME AEM_COMPONENTS
   aem_load_components
+  printf '\n%s\n' '========================================'
+  printf '  %s — instalación completa\n' "$PROJECT_NAME"
+  printf '%s\n\n' '========================================'
   aem_log info "Usuario objetivo: $AEM_USER ($AEM_HOME)"
   aem_log info "Componentes: $AEM_COMPONENTS"
   aem_log info "Tema: $AEM_THEME"
   aem_confirm_plan
-  if [[ $apt_update == 1 ]]; then
-    aem_log info "Actualizando índices APT"
-    aem_as_root apt-get update
-  fi
+  aem_log info "Actualizando índices APT"
+  aem_as_root apt-get update
   local component function_name
   for component in $AEM_COMPONENTS; do
     aem_valid_component "$component" || aem_die "Nombre de componente inválido: $component"

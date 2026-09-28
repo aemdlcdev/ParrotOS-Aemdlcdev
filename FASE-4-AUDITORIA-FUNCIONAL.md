@@ -17,7 +17,7 @@ Fecha: 2026-09-28
 | Exigir privilegios | Ejecución completa como root | Elevación solo para APT; resto como usuario objetivo | Mejorado |
 | Detectar usuario real | Dependencia directa de `SUDO_USER` | SUDO, usuario directo y override explícito validados con NSS | Mejorado |
 | Detectar distribución | No existe detección robusta | `/etc/os-release`, Parrot 7.x, Debian 13 experimental y amd64 | Implementado |
-| Actualizar índices APT | Sí | Sí, opcional y separable | Implementado |
+| Actualizar índices APT | Sí | Sí, integrado en el launcher | Implementado |
 | Modificar fuentes APT | Modifica `sources.list` | Nunca modifica repositorios | Mejorado |
 | Comprobar paquetes existentes | Parcial | `dpkg-query` antes de instalar | Mejorado |
 | Comprobar disponibilidad | No | `apt-cache` y fallo explícito | Mejorado |
@@ -25,7 +25,7 @@ Fecha: 2026-09-28
 | Compilar ramas Git | BSPWM, SXHKD, Polybar y Picom | No se compilan si existe paquete compatible | Mejorado |
 | Versionar dependencias upstream | No | Powerlevel10k por tag y Oh My Zsh por commit | Mejorado |
 | Verificar descargas | No | Checksum oficial para Nerd Fonts | Mejorado |
-| Instalación selectiva | No | Perfiles y lista de componentes | Implementado |
+| Instalación unificada | No | Un launcher instala el conjunto completo | Mejorado |
 | Menú de instalación | No | Menú interactivo y flags automatizables | Implementado |
 | Simulación | No | `--dry-run` | Implementado |
 | Backups | No sistemáticos | Backup con manifiesto antes de reemplazar | Mejorado |
@@ -92,7 +92,7 @@ Fecha: 2026-09-28
 | Zsh | Reemplaza `.zshrc` | Añade un bloque gestionado que carga módulos XDG | Mejorado |
 | Configuración de root | Copia y enlaza archivos del usuario | No se toca root | Excluido por seguridad |
 | Powerlevel10k | Clon sin versión y configuración completa | Tag fijado y configuración propia mínima | Mejorado |
-| Oh My Zsh | No es parte efectiva del instalador observado | Componente opcional fijado a commit | Añadido |
+| Oh My Zsh | No es parte efectiva del instalador observado | Incluido desde un commit oficial fijado | Añadido |
 | Autosuggestions/highlighting | APT | APT | Implementado |
 | fzf | Instalación manual por usuario y root | Paquete APT e integración Debian | Mejorado |
 | bat y lsd | Paquetes `.deb` incluidos | Paquetes APT | Mejorado |

@@ -9,7 +9,7 @@ bspwm sxhkd polybar picom kitty rofi zsh neovim fzf flameshot
 feh i3lock fastfetch bat lsd ripgrep openvpn xclip pavucontrol
 ```
 
-Powerlevel10k, Oh My Zsh opcional y JetBrainsMono Nerd Font se obtienen desde sus repositorios/releases oficiales con versión fijada. Las fuentes verifican el checksum publicado por Nerd Fonts.
+Powerlevel10k, Oh My Zsh y JetBrainsMono Nerd Font se obtienen desde sus repositorios/releases oficiales con versión fijada. Las fuentes verifican el checksum publicado por Nerd Fonts.
 
 El instalador nunca añade repositorios ni modifica listas APT.
 

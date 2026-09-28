@@ -60,7 +60,6 @@ project-root/
 ├── installer/
 │   ├── bootstrap.sh
 │   ├── cli.sh
-│   ├── menu.sh
 │   └── uninstall.sh
 │
 ├── lib/
@@ -245,38 +244,17 @@ Orden de dependencias propuesto:
 8. Temas y autoinicio.
 9. Verificación integral.
 
-## 6. Modos de instalación
+## 6. Modo de instalación
 
-### Menú interactivo
+La propuesta inicial de perfiles fue sustituida por un launcher único para reducir decisiones y evitar instalaciones parciales inconsistentes. `./install.sh` instala el conjunto completo y usa valores seguros predefinidos.
 
-```text
-[1] Entorno completo
-[2] Escritorio BSPWM
-[3] Terminal y shell
-[4] Herramientas de productividad
-[5] Flujo pentest
-[6] Temas y apariencia
-[7] Diagnóstico
-[8] Desinstalar
-[0] Salir
-```
-
-### Interfaz no interactiva
-
-Se propondrán opciones equivalentes a:
+La interfaz pública queda limitada a:
 
 ```text
---profile full|desktop|shell|tools|pentest|minimal
---components lista,separada
---theme <nombre>
 --dry-run
 --yes
---no-system-upgrade
---allow-debian-13
---force-unsupported
+--help
 ```
-
-`--force-unsupported` mostrará una advertencia fuerte y nunca añadirá repositorios de otra distribución.
 
 ## 7. Estrategia de paquetes
 

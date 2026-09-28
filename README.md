@@ -24,7 +24,7 @@ Las capturas se añadirán después de validar la instalación real:
 - Neovim propio y deliberadamente pequeño.
 - Temas originales `nocturne` y `daybreak`.
 - Herramientas `targetctl`, `pentest-workspace` y `nmap-ports`.
-- Instalación selectiva, simulación, backups, logs y manifiesto.
+- Launcher completo, simulación, backups, logs y manifiesto.
 - Desinstalación conservadora.
 
 ## Requisitos
@@ -36,60 +36,32 @@ Las capturas se añadirán después de validar la instalación real:
 - Conexión HTTPS para Powerlevel10k y Nerd Fonts.
 - Usuario con acceso a `sudo`.
 
-Debian 13 puede habilitarse como plataforma experimental. Ubuntu, Kali y otras distribuciones no están soportadas automáticamente.
+El launcher acepta Parrot OS 7.x sobre `amd64`; Debian puro, Ubuntu, Kali y otras distribuciones se rechazan para evitar aplicar cambios sobre una plataforma no validada.
 
-## Instalación rápida
+## Instalación
 
-Revisa primero el plan:
-
-```bash
-chmod +x install.sh uninstall.sh update.sh
-./install.sh --profile full --dry-run --yes
-```
-
-Después aplica la instalación:
+Clona el repositorio, entra en su directorio y ejecuta un único launcher como usuario normal:
 
 ```bash
-./install.sh --profile full
+./install.sh
 ```
 
-El instalador solicitará privilegios solo cuando los necesite. No lo ejecutes desde una copia que no hayas revisado.
+El launcher instala el entorno completo, incluyendo BSPWM, Polybar, Picom, Kitty, Rofi, Zsh, Oh My Zsh, Powerlevel10k, Neovim y las herramientas de pentest. Utiliza el tema `nocturne`, actualiza los índices APT y solicita privilegios solo cuando son necesarios.
 
 Al terminar, cierra sesión y selecciona `bspwm` en el gestor de acceso.
 
-## Instalación selectiva
-
-Perfiles disponibles:
+La única comprobación opcional es una simulación completa:
 
 ```bash
-./install.sh --profile desktop
-./install.sh --profile shell
-./install.sh --profile tools
-./install.sh --profile pentest
-./install.sh --profile minimal
+./install.sh --dry-run
 ```
 
-También puedes indicar componentes:
-
-```bash
-./install.sh --components bspwm,sxhkd,kitty,rofi
-```
-
-Oh My Zsh es deliberadamente opcional y se instala desde un commit oficial fijado:
-
-```bash
-./install.sh --components shell,oh-my-zsh
-```
-
-Opciones destacadas:
+Opciones disponibles:
 
 ```text
---theme nocturne|daybreak
 --dry-run
 --yes
---skip-apt-update
---allow-debian-13
---force-unsupported
+--help
 ```
 
 ## Configuración
@@ -162,7 +134,7 @@ La barra reconoce de forma predeterminada interfaces `tun*`, `tap*` y `wg*`. Per
 - `components/`: instalación de cada componente.
 - `config/`: configuraciones originales desplegables.
 - `scripts/`: utilidades de sesión y pentest.
-- `metadata/`: identidad, perfiles y versiones.
+- `metadata/`: identidad, componentes y versiones.
 - `docs/`: diseño, configuración y pruebas.
 - `tests/`: validaciones estáticas y unitarias.
 
