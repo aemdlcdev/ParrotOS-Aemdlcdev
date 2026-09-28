@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+"""Manage the current lab target without evaluating shell data."""
+from __future__ import annotations
+import argparse
+import ipaddress
+import json
+import os
+from pathlib import Path
+import sys
+import tempfile
+
+def state_path() -> Path:
+    root = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local/state"))
+    return root / "aemdlc-environment" / "target.json"
+
+def validate_name(value: str) -> str:
+    if not 1 <= len(value) <= 64 or value.strip() != value or not value.isprintable() or "%{" in value:
+        raise ValueError("el nombre debe ser imprimible, no tener espacios extremos ni formato Polybar")
+    return value
+
+def load_target() -> dict[str, str] | None:
+    try:
+        value = json.loads(state_path().read_text(encoding="utf-8"))
+        ipaddress.ip_address(value["address"])
+        validate_name(value["name"])
+        return {"address": value["address"], "name": value["name"]}
+    except (OSError, ValueError, KeyError, TypeError, json.JSONDecodeError):
+        return None
+
+def set_target(address: str, name: str) -> None:
+    normalized = str(ipaddress.ip_address(address))
+    validate_name(name)
+    path = state_path()
+    path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+    handle, temporary = tempfile.mkstemp(prefix="target-", suffix=".json", dir=path.parent)
+    try:
+        with os.fdopen(handle, "w", encoding="utf-8") as stream:
+            json.dump({"address": normalized, "name": name}, stream, ensure_ascii=False)
+            stream.write("\n")
+        os.chmod(temporary, 0o600)
+        os.replace(temporary, path)
+    finally:
+        if os.path.exists(temporary): os.unlink(temporary)
+
+def show_target(output_format: str) -> int:
+    target = load_target()
+    if target is None:
+        print("󰓾 sin objetivo" if output_format == "polybar" else "null" if output_format == "json" else "No hay objetivo definido")
+        return 1
+    if output_format == "json": print(json.dumps(target, ensure_ascii=False))
+    elif output_format == "polybar": print(f"󰓾 {target['address']} · {target['name']}")
+    else: print(f"{target['address']} {target['name']}")
+    return 0
+
+def main() -> int:
+    parser = argparse.ArgumentParser(prog="targetctl")
+    commands = parser.add_subparsers(dest="command", required=True)
+    setter = commands.add_parser("set", help="define un objetivo")
+    setter.add_argument("address")
+    setter.add_argument("name")
+    show = commands.add_parser("show", help="muestra el objetivo")
+    show.add_argument("--format", choices=("text", "json", "polybar"), default="text")
+    commands.add_parser("clear", help="borra el objetivo")
+    args = parser.parse_args()
+    try:
+        if args.command == "set": set_target(args.address, args.name); return 0
+        if args.command == "show": return show_target(args.format)
+        state_path().unlink(missing_ok=True)
+        return 0
+    except ValueError as error:
+        parser.error(str(error))
+    return 2
+
+if __name__ == "__main__": sys.exit(main())
+

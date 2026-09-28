@@ -1,0 +1,5 @@
+@import "theme.rasi"
+window { width: 26%; border: 2px; border-radius: 14px; padding: 14px; }
+listview { lines: 5; spacing: 6px; }
+element { padding: 10px; border-radius: 8px; }
+

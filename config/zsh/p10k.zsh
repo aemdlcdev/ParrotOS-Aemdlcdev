@@ -1,0 +1,12 @@
+typeset -g POWERLEVEL9K_MODE=nerdfont-complete
+typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs newline prompt_char)
+typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time background_jobs context time)
+typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='╭─'
+typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='╰─'
+typeset -g POWERLEVEL9K_DIR_FOREGROUND=81
+typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND=84
+typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=214
+typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
