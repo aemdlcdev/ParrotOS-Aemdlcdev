@@ -2,7 +2,7 @@
 
 Entorno BSPWM modular para Parrot OS 7.3, construido para convivir con el escritorio instalado y aportar un flujo de trabajo ágil para terminal, desarrollo y laboratorios de seguridad.
 
-El proyecto instala componentes desde los repositorios activos de Parrot/Debian siempre que sea posible. No cambia fuentes APT, no reemplaza el escritorio existente y no distribuye binarios, fuentes o fondos de terceros.
+El proyecto instala componentes desde los repositorios activos de Parrot/Debian siempre que sea posible. No cambia fuentes APT, no reemplaza el escritorio existente y no distribuye binarios, fuentes o fondos de terceros. Incluye un fondo original propio.
 
 > Estado: candidato inicial con implementación y auditorías clean-room completadas. Debe validarse en una máquina o VM Parrot OS 7.3 antes de considerarse estable.
 
@@ -82,7 +82,7 @@ Los archivos instalados se distribuyen entre:
 
 ### Fondo
 
-No se incluye un fondo. Define uno antes de iniciar BSPWM:
+El tema Nocturne aplica el fondo original del proyecto. Puedes sustituirlo para una sesión definiendo:
 
 ```bash
 export AEM_WALLPAPER="$HOME/Imágenes/mi-fondo.jpg"

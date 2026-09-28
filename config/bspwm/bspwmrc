@@ -7,15 +7,15 @@ runtime="$data_home/aemdlc-environment/bin"
 "$runtime/workspace-init"
 
 bspc config border_width 2
-bspc config window_gap 10
+bspc config window_gap 12
 bspc config split_ratio 0.55
 bspc config focus_follows_pointer true
 bspc config pointer_follows_focus false
 bspc config borderless_monocle true
 bspc config gapless_monocle true
-bspc config normal_border_color '#30384c'
-bspc config active_border_color '#6f7c9b'
-bspc config focused_border_color '#55d6be'
+bspc config normal_border_color '#202a38'
+bspc config active_border_color '#45c7d9'
+bspc config focused_border_color '#ff496c'
 
 bspc rule -a 'Gimp' state=floating
 bspc rule -a 'Pavucontrol' state=floating center=true

@@ -5,5 +5,6 @@ aem_component_bspwm_install() {
   aem_install_user_file "$PROJECT_ROOT/scripts/session-start.sh" "$AEM_PROJECT_DATA/bin/session-start" 0755
   aem_install_user_file "$PROJECT_ROOT/scripts/workspace-init.sh" "$AEM_PROJECT_DATA/bin/workspace-init" 0755
   aem_install_user_file "$PROJECT_ROOT/scripts/resize-window.sh" "$AEM_PROJECT_DATA/bin/resize-window" 0755
+  aem_install_user_file "$PROJECT_ROOT/assets/wallpapers/aemdlc-nocturne.png" "$AEM_PROJECT_DATA/wallpapers/aemdlc-nocturne.png" 0644
 }
 

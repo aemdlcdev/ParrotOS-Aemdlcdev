@@ -1,4 +1,4 @@
-* { background: #10141ff2; surface: #222938; foreground: #e8edf5; muted: #7d889f; accent: #55d6be; selected-normal-background: @accent; selected-normal-foreground: #10141f; }
+* { background: #090d12f2; surface: #354052; foreground: #f1f4f8; muted: #8c98aa; accent: #ff496c; selected-normal-background: @accent; selected-normal-foreground: #090d12; }
 window { background-color: @background; border-color: @accent; }
 mainbox, inputbar, listview { background-color: transparent; }
 entry, prompt { text-color: @foreground; }

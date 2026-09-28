@@ -7,8 +7,10 @@ for _ in {1..20}; do pgrep -u "$UID" -x polybar >/dev/null || break; sleep 0.1; 
 
 mapfile -t monitors < <(polybar --list-monitors | cut -d: -f1)
 if ((${#monitors[@]} == 0)); then
-  polybar --config="$config" main &
+  for bar in left center right; do polybar --config="$config" "$bar" & done
 else
-  for monitor in "${monitors[@]}"; do MONITOR=$monitor polybar --config="$config" main & done
+  for monitor in "${monitors[@]}"; do
+    for bar in left center right; do MONITOR=$monitor polybar --config="$config" "$bar" & done
+  done
 fi
 

@@ -12,7 +12,7 @@ Este repositorio no relicencia los proyectos siguientes. El instalador los obtie
 | Rofi | https://github.com/davatorium/rofi | MIT | Lanzadores y menús, paquete APT. |
 | Zsh | https://www.zsh.org/ | Licencia Zsh | Shell, paquete APT. |
 | Powerlevel10k | https://github.com/romkatv/powerlevel10k | MIT | Prompt, tag oficial fijado. |
-| Oh My Zsh | https://github.com/ohmyzsh/ohmyzsh | MIT | Integración opcional, no instalada por defecto. |
+| Oh My Zsh | https://github.com/ohmyzsh/ohmyzsh | MIT | Integración instalada desde un commit oficial fijado. |
 | Neovim | https://github.com/neovim/neovim | Apache-2.0 | Editor, paquete APT. |
 | fzf | https://github.com/junegunn/fzf | MIT | Búsqueda difusa, paquete APT. |
 | Flameshot | https://flameshot.org/ | GPL-3.0-or-later | Capturas, paquete APT. |

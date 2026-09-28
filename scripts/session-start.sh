@@ -12,7 +12,7 @@ if command -v flameshot >/dev/null && ! pgrep -u "$UID" -x flameshot >/dev/null;
   flameshot &
 fi
 
-wallpaper=${AEM_WALLPAPER:-}
+wallpaper=${AEM_WALLPAPER:-"$data_home/aemdlc-environment/wallpapers/aemdlc-nocturne.png"}
 if [[ -n $wallpaper && -r $wallpaper ]]; then
   feh --no-fehbg --bg-fill "$wallpaper" &
 fi
