@@ -27,7 +27,7 @@ window {
 }
 
 mainbox { background-color: @background; children: [ inputbar, listview ]; spacing: 5px; padding: 5px; }
-inputbar { children: [ prompt, entry ]; background-color: @background; text-color: @foreground; border: 0px 0px 1px 0px; border-radius: 20px; border-color: @border; }
+inputbar { children: [ prompt, entry ]; background-color: @background; text-color: @foreground; expand: false; border: 0px 0px 1px 0px; border-radius: 20px; border-color: @border; margin: 0px; padding: 0px; position: center; }
 prompt { enabled: true; padding: 4px 4px 6px 12px; background-color: @background; text-color: @selected; }
 entry { background-color: @background; text-color: @foreground; placeholder-color: @foreground; placeholder: "Search"; blink: true; padding: 5px 0px 0px 0px; }
 listview { background-color: @background; columns: 1; spacing: 4px; cycle: false; dynamic: true; layout: vertical; }
@@ -35,5 +35,6 @@ element { background-color: @background; text-color: @foreground; orientation: h
 element-icon { size: 24px; border: 0px; }
 element-text { expand: true; horizontal-align: 0; vertical-align: 0; margin: 2px 0px 2px 2px; }
 element selected { background-color: @selected; text-color: @background; border-radius: 20px; }
+case-indicator { background-color: @background; text-color: @foreground; spacing: 0; }
 element normal.urgent, element alternate.urgent, element selected.urgent { background-color: @urgent; text-color: @foreground; }
 element normal.active, element alternate.active, element selected.active { background-color: @background-alt; text-color: @foreground; }

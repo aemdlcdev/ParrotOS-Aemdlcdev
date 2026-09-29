@@ -9,14 +9,17 @@ configuration {
   fullscreen: false;
   hide-scrollbar: true;
   sidebar-mode: false;
-  location: 7;
+  location: 3;
 }
 
-window { transparency: "real"; background-color: @background; text-color: @foreground; border-radius: 20px; height: 27%; width: 17%; x-offset: 30; y-offset: -90; }
+window { transparency: "real"; background-color: @background; text-color: @foreground; border-radius: 20px; height: 27%; width: 12%; x-offset: -30; y-offset: 70; }
 mainbox { background-color: @background; children: [ inputbar, listview ]; spacing: 5px; padding: 5px; }
-inputbar { children: [ prompt ]; background-color: @background; text-color: @foreground; border: 0px 0px 1px 0px; border-radius: 20px; border-color: @border; }
+inputbar { children: [ textbox-prompt-colon, prompt ]; background-color: @background; text-color: @foreground; expand: false; border: 0px 0px 1px 0px; border-radius: 20px; border-color: @border; margin: 0px; padding: 0px; position: center; }
+textbox-prompt-colon { expand: false; str: ""; background-color: @background; text-color: @urgent; padding: 5px 0px 0px 10px; font: "Hack Nerd Font 10"; }
 prompt { enabled: true; padding: 4px 4px 6px 6px; background-color: @background; text-color: @foreground; }
 listview { background-color: @background; columns: 1; spacing: 4px; cycle: true; dynamic: true; layout: vertical; }
 element { background-color: @background; text-color: @foreground; orientation: horizontal; border-radius: 4px; padding: 6px; }
 element-text { expand: true; horizontal-align: 0; vertical-align: 0; margin: 2px 0px 2px 2px; }
 element selected { background-color: @selected; text-color: @background; border-radius: 20px; }
+element normal.urgent, element alternate.urgent, element selected.urgent { background-color: @urgent; text-color: @foreground; }
+element normal.active, element alternate.active, element selected.active { background-color: @background-alt; text-color: @foreground; }

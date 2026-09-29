@@ -66,6 +66,8 @@ Opciones disponibles:
 
 ## Configuración
 
+La especificación utilizada para mantener la apariencia se documenta en [docs/visual-parity.md](docs/visual-parity.md).
+
 Los archivos instalados se distribuyen entre:
 
 ```text
@@ -200,7 +202,7 @@ Consulta [SECURITY.md](SECURITY.md). No ejecutes instaladores modificados por te
 
 ## Créditos
 
-Construido con proyectos libres mantenidos por sus respectivas comunidades. Inspirado conceptualmente en distintos entornos BSPWM para Parrot/Kali, entre ellos ParrotEntorno, sin reutilizar su implementación ni sus recursos.
+Construido con proyectos libres mantenidos por sus respectivas comunidades. Inspirado conceptualmente en distintos entornos BSPWM para Parrot/Kali, incluido [ParrotEntorno](https://github.com/Balthael/ParrotEntorno). Aemdlc Environment conserva una implementación, estructura, documentación y recursos propios.
 
 ## Licencias
 

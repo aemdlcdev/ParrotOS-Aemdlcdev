@@ -25,5 +25,6 @@ grep -Rq --exclude='FASE-1-INVENTARIO-FUNCIONAL.md' --exclude='README.md' "$need
   printf 'Se encontró branding ajeno fuera de las menciones autorizadas\n' >&2
   exit 1
 }
+bash "$root/tests/visual-contract.sh"
 printf 'smoke: OK\n'
 
