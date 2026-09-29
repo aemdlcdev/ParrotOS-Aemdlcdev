@@ -113,6 +113,31 @@ El estado se guarda como JSON con permisos de usuario en `~/.local/state/aemdlc-
 
 La barra reconoce de forma predeterminada interfaces `tun*`, `tap*` y `wg*`. Personaliza los prefijos con `AEM_VPN_PATTERNS`.
 
+### Comandos incluidos
+
+Los comandos se instalan en `~/.local/share/aemdlc-environment/bin/`. El instalador añade esa ruta al entorno del usuario.
+
+| Comando | Acción |
+|---|---|
+| `doctor` | Comprueba programas, sesión, monitores, fuentes y DPI |
+| `targetctl set <IP> <nombre>` | Define la máquina objetivo |
+| `targetctl show` | Muestra el objetivo actual |
+| `targetctl clear` | Elimina el objetivo actual |
+| `theme-switcher nocturne` | Activa el tema oscuro |
+| `theme-switcher daybreak` | Activa el tema claro |
+| `pentest-workspace [directorio]` | Crea `scans`, `content`, `exploits` y `notes` |
+| `nmap-ports <archivo-nmap>` | Extrae y copia los puertos TCP abiertos |
+| `power-menu` | Abre el menú de bloqueo, suspensión y apagado |
+| `launch-polybar` | Reinicia todas las barras administradas |
+
+Comandos de mantenimiento desde el directorio del proyecto:
+
+| Comando | Acción |
+|---|---|
+| `./install.sh` | Instala el entorno completo |
+| `./update.sh --yes` | Actualiza una instalación existente |
+| `./uninstall.sh` | Desinstala únicamente los archivos administrados |
+
 ## Atajos de teclado
 
 `Super` es la tecla Windows. La configuración instalada incluye:

@@ -4,7 +4,7 @@ Esta revisión utiliza como referencia principal las capturas públicas del proy
 
 ## Contrato para 1920×1080
 
-- Polybar: seis cápsulas a 15 px del borde superior y 40 px de altura.
+- Polybar: seis cápsulas a 15 px del borde superior y 40 px de altura; el botón de energía mantiene también 40 px de ancho para permanecer circular en cualquier monitor.
 - Posiciones horizontales: `1%`, `4%`, `14.3%`, `41%`, `79.7%` y `96.9%`.
 - Superficie de Polybar: `#435060`; texto principal blanco.
 - BSPWM: gap de 12 px, split `0.52` y sin borde visible.
