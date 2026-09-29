@@ -1,7 +1,9 @@
-* { background: #1a1b26f2; surface: #3b4658; foreground: #c0caf5; muted: #a9b1d6; accent: #ff334f; selected-normal-background: @accent; selected-normal-foreground: #1a1b26; }
-window { background-color: @background; border-color: @accent; }
-mainbox, inputbar, listview { background-color: transparent; }
-entry, prompt { text-color: @foreground; }
-element { background-color: transparent; text-color: @foreground; }
-element selected { background-color: @selected-normal-background; text-color: @selected-normal-foreground; }
+* {
+  background: #000000ff;
+  background-alt: #000000ff;
+  foreground: #808080ff;
+  border: #5895dcff;
+  selected: #5895dcff;
+  urgent: #ec407aff;
+}
 

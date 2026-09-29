@@ -1,9 +1,39 @@
 @import "theme.rasi"
 
-configuration { modi: "drun,run,window"; show-icons: true; display-drun: "Aplicaciones"; drun-display-format: "{name}"; }
-window { width: 42%; border: 2px; border-radius: 14px; padding: 16px; }
-inputbar { children: [ prompt, entry ]; spacing: 10px; }
-listview { columns: 1; lines: 9; spacing: 5px; }
-element { padding: 8px; border-radius: 8px; }
-element-icon { size: 24px; }
+configuration {
+  font: "Iosevka Nerd Font 10";
+  show-icons: true;
+  icon-theme: "Papirus";
+  display-drun: "";
+  drun-display-format: " {name}";
+  threads: 0;
+  scroll-method: 0;
+  disable-history: false;
+  fullscreen: false;
+  hide-scrollbar: true;
+  sidebar-mode: false;
+  location: 7;
+}
 
+window {
+  transparency: "real";
+  background-color: @background;
+  text-color: @foreground;
+  border-radius: 20px;
+  height: 31%;
+  width: 17%;
+  x-offset: 30;
+  y-offset: -90;
+}
+
+mainbox { background-color: @background; children: [ inputbar, listview ]; spacing: 5px; padding: 5px; }
+inputbar { children: [ prompt, entry ]; background-color: @background; text-color: @foreground; border: 0px 0px 1px 0px; border-radius: 20px; border-color: @border; }
+prompt { enabled: true; padding: 4px 4px 6px 12px; background-color: @background; text-color: @selected; }
+entry { background-color: @background; text-color: @foreground; placeholder-color: @foreground; placeholder: "Search"; blink: true; padding: 5px 0px 0px 0px; }
+listview { background-color: @background; columns: 1; spacing: 4px; cycle: false; dynamic: true; layout: vertical; }
+element { background-color: @background; text-color: @foreground; orientation: horizontal; border-radius: 20px; padding: 6px; }
+element-icon { size: 24px; border: 0px; }
+element-text { expand: true; horizontal-align: 0; vertical-align: 0; margin: 2px 0px 2px 2px; }
+element selected { background-color: @selected; text-color: @background; border-radius: 20px; }
+element normal.urgent, element alternate.urgent, element selected.urgent { background-color: @urgent; text-color: @foreground; }
+element normal.active, element alternate.active, element selected.active { background-color: @background-alt; text-color: @foreground; }
