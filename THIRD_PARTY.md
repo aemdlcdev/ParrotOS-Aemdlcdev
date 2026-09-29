@@ -20,7 +20,7 @@ Este repositorio no relicencia los proyectos siguientes. El instalador los obtie
 | Fastfetch | https://github.com/fastfetch-cli/fastfetch | MIT | Información del sistema, paquete APT. |
 | bat | https://github.com/sharkdp/bat | Apache-2.0 OR MIT | Visor de texto, paquete APT. |
 | lsd | https://github.com/lsd-rs/lsd | Apache-2.0 | Listado de archivos, paquete APT. |
-| Nerd Fonts | https://github.com/ryanoasis/nerd-fonts | MIT y licencias de cada fuente/glifo | JetBrainsMono Nerd Font descargada desde release verificado. |
+| Nerd Fonts | https://github.com/ryanoasis/nerd-fonts | MIT y licencias de cada fuente/glifo | JetBrainsMono, Iosevka y Hack descargadas desde assets oficiales verificados. |
 | Feh | https://feh.finalrewind.org/ | MIT-feh | Fondo de escritorio, paquete APT. |
 | OpenVPN | https://openvpn.net/community/ | GPL-2.0-only con excepciones | Perfiles VPN del usuario, paquete APT. |
 | ImageMagick | https://imagemagick.org/ | ImageMagick License | Utilidad gráfica, paquete APT. |

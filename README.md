@@ -111,22 +111,39 @@ El estado se guarda como JSON con permisos de usuario en `~/.local/state/aemdlc-
 
 La barra reconoce de forma predeterminada interfaces `tun*`, `tap*` y `wg*`. Personaliza los prefijos con `AEM_VPN_PATTERNS`.
 
-## Atajos principales
+## Atajos de teclado
+
+`Super` es la tecla Windows. La configuración instalada incluye:
 
 | Atajo | Acción |
 |---|---|
 | `Super + Enter` | Abrir Kitty |
 | `Super + Espacio` | Abrir Rofi |
-| `Super + Q` | Cerrar ventana |
-| `Super + 1…0` | Cambiar de escritorio |
-| `Super + Shift + 1…0` | Enviar ventana y seguirla |
-| `Super + H/J/K/L` | Cambiar el foco |
-| `Super + Shift + H/J/K/L` | Intercambiar ventanas |
-| `Super + Alt + H/J/K/L` | Redimensionar |
-| `Super + Ctrl + Alt + H/J/K/L` | Preseleccionar dirección |
 | `Super + Shift + S` | Captura con Flameshot |
 | `Super + Shift + X` | Bloquear |
 | `Super + Shift + P` | Menú de energía |
+| `Super + Q` | Cerrar la ventana enfocada |
+| `Super + Shift + Q` | Forzar el cierre de la ventana enfocada |
+| `Super + Shift + R` | Recargar BSPWM |
+| `Super + Shift + M` | Alternar disposición monocle |
+| `Super + T` | Poner la ventana en mosaico |
+| `Super + Shift + T` | Poner la ventana en modo flotante |
+| `Super + F` | Alternar pantalla completa |
+| `Super + Ctrl + M` | Marcar o desmarcar una ventana |
+| `Super + Ctrl + S` | Hacer una ventana adhesiva |
+| `Super + Ctrl + P` | Hacer una ventana privada |
+| `Super + H/J/K/L` | Enfocar oeste/sur/norte/este |
+| `Super + Shift + H/J/K/L` | Intercambiar con la ventana al oeste/sur/norte/este |
+| `Super + [ / ]` | Ir al escritorio anterior/siguiente |
+| `Super + Tab` | Volver al último escritorio |
+| `Super + 1…0` | Ir a los escritorios 1…10 |
+| `Super + Shift + 1…0` | Enviar la ventana al escritorio y seguirla |
+| `Super + Ctrl + Alt + H/J/K/L` | Preseleccionar oeste/sur/norte/este |
+| `Super + Ctrl + Alt + 1…9` | Ajustar la proporción de preselección |
+| `Super + Ctrl + Alt + Espacio` | Cancelar la preselección |
+| `Super + Alt + H/J/K/L` | Redimensionar la ventana hacia cada dirección |
+| `Super + Alt + Shift + H/J/K/L` | Mover la ventana en pasos de 24 px |
+| `Super + Escape` | Recargar SXHKD |
 
 ## Estructura
 
