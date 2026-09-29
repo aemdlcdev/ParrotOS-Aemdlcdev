@@ -14,7 +14,7 @@ Fecha: 2026-09-28
 | Comportamiento | Referencia | Aemdlc Environment | Estado |
 |---|---|---|---|
 | Instalar el entorno desde shell | Script único y lineal | Entradas pequeñas, bibliotecas y componentes | Mejorado |
-| Exigir privilegios | Ejecución completa como root | Elevación solo para APT; resto como usuario objetivo | Mejorado |
+| Exigir privilegios | Ejecución completa como root | Elevación para APT y archivos root-owned declarados; escritorio como usuario objetivo | Mejorado |
 | Detectar usuario real | Dependencia directa de `SUDO_USER` | SUDO, usuario directo y override explícito validados con NSS | Mejorado |
 | Detectar distribución | No existe detección robusta | `/etc/os-release`, Parrot 7.x, Debian 13 experimental y amd64 | Implementado |
 | Actualizar índices APT | Sí | Sí, integrado en el launcher | Implementado |
@@ -90,7 +90,7 @@ Fecha: 2026-09-28
 |---|---|---|---|
 | Kitty | Configuración completa copiada | Configuración nueva, pequeña y documentada | Implementado; visual pendiente |
 | Zsh | Reemplaza `.zshrc` | Añade un bloque gestionado que carga módulos XDG | Mejorado |
-| Configuración de root | Copia y enlaza archivos del usuario | No se toca root | Excluido por seguridad |
+| Configuración de root | Copia y enlaza archivos del usuario | Configuración root-owned aislada en `/etc` y `/usr/local`, con bloques reversibles | Mejorado |
 | Powerlevel10k | Clon sin versión y configuración completa | Tag fijado y configuración propia mínima | Mejorado |
 | Oh My Zsh | No es parte efectiva del instalador observado | Incluido desde un commit oficial fijado | Añadido |
 | Autosuggestions/highlighting | APT | APT | Implementado |
@@ -134,7 +134,7 @@ Fecha: 2026-09-28
 
 ## Resultado de la auditoría funcional
 
-La implementación cubre el núcleo funcional solicitado y mejora instalación, portabilidad, estado target, red/VPN, seguridad y mantenimiento. Las diferencias intencionadas son la ausencia de configuración de root, binarios, fondos, lanzadores personales, forks no necesarios y utilidades sin justificación actual.
+La implementación cubre el núcleo funcional solicitado y mejora instalación, portabilidad, estado target, red/VPN, seguridad y mantenimiento. La integración de root no carga archivos modificables por el usuario y comparte el target bajando privilegios. Se mantienen como diferencias intencionadas la ausencia de binarios, fondos y lanzadores personales, forks no necesarios y utilidades sin justificación actual.
 
 No puede declararse todavía equivalencia visual final ni instalación validada: esas afirmaciones requieren ejecutar la checklist en Parrot OS 7.3 amd64 con X11. Los puntos pendientes están enumerados en `docs/testing-parrot-7.3.md`.
 

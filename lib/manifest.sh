@@ -4,7 +4,7 @@ aem_manifest_add() {
   local kind=$1 path=$2
   [[ $AEM_DRY_RUN == 1 ]] && return 0
   local checksum=''
-  if [[ $kind == file && -f $path ]]; then checksum=$(sha256sum "$path" | awk '{print $1}'); fi
+  if [[ $kind == file || $kind == system-file ]] && [[ -f $path ]]; then checksum=$(sha256sum "$path" | awk '{print $1}'); fi
   printf '%s\t%s\t%s\n' "$kind" "$path" "$checksum" >>"$AEM_PROJECT_STATE/managed.tsv"
 }
 

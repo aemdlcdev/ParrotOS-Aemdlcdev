@@ -7,6 +7,7 @@ required=(
   config/bspwm/bspwmrc config/sxhkd/sxhkdrc config/polybar/config.ini
   config/picom/picom.conf config/kitty/kitty.conf config/rofi/launcher.rasi
   scripts/targetctl scripts/network-status.sh scripts/vpn-status.sh
+  components/root-integration.sh config/zsh/root-init.zsh scripts/targetctl-system.sh
 )
 for path in "${required[@]}"; do [[ -s $root/$path ]] || { printf 'Falta: %s\n' "$path" >&2; exit 1; }; done
 source "$root/metadata/versions.conf"
@@ -26,5 +27,8 @@ grep -Rq --exclude='FASE-1-INVENTARIO-FUNCIONAL.md' --exclude='README.md' "$need
   exit 1
 }
 bash "$root/tests/visual-contract.sh"
+bash "$root/tests/unit/test-system-paths.sh"
+bash "$root/tests/unit/test-root-integration-dry-run.sh"
+bash "$root/tests/unit/test-targetctl-system.sh"
 printf 'smoke: OK\n'
 

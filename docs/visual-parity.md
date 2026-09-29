@@ -19,7 +19,7 @@ El contrato se comprueba estáticamente mediante `tests/visual-contract.sh`.
 
 - El wallpaper es un recurso propio: conserva una luminancia y contraste compatibles, pero no reproduce el asset de procedencia incierta.
 - La salida target conserva el orden visible `nombre - IP`, aunque una revisión del script de referencia utilizaba el orden contrario.
-- No se configura automáticamente el shell de `root`: hacerlo ampliaría el alcance de la instalación y modificaría una cuenta distinta del usuario objetivo.
+- La shell de `root` utiliza la misma familia visual del prompt mediante una instalación aislada y propiedad de root; no carga configuraciones editables por el usuario normal.
 - NvChad actual requiere Neovim 0.11. Debian 13 distribuye Neovim 0.10.4, por lo que no se instala automáticamente una versión incompatible ni se incorpora la copia binaria antigua del repositorio de referencia.
 - La validación pixel-perfect de baseline, antialiasing y DPI requiere capturas obtenidas en una sesión Parrot OS 7.3 real.
 

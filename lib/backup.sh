@@ -15,3 +15,19 @@ aem_backup_path() {
   aem_log info "Backup: $source"
 }
 
+aem_backup_system_path() {
+  local source=$1 relative backup timestamp
+  aem_system_path_allowed "$source" || aem_die "Backup de sistema rechazado: $source"
+  aem_as_root test -e "$source" || return 0
+  timestamp=$(date '+%Y%m%d-%H%M%S')
+  relative=${source#/}
+  backup="/root/.local/state/$PROJECT_ID/backups/$timestamp/$relative"
+  if [[ $AEM_DRY_RUN == 1 ]]; then
+    aem_log info "[simulación/root] backup de $source"
+    return
+  fi
+  aem_as_root install -d -m 0700 "$(dirname -- "$backup")"
+  aem_as_root cp -a -- "$source" "$backup"
+  aem_log info "Backup de sistema: $source"
+}
+

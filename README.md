@@ -138,6 +138,16 @@ Comandos de mantenimiento desde el directorio del proyecto:
 | `./update.sh --yes` | Actualiza una instalación existente |
 | `./uninstall.sh` | Desinstala únicamente los archivos administrados |
 
+### Shell de root
+
+La instalación completa añade una integración separada y propiedad de `root`. Al ejecutar `sudo su`, Bash transfiere la sesión interactiva a Zsh con Powerlevel10k sin cambiar permanentemente el shell registrado en `/etc/passwd`.
+
+Dentro de la shell de root funcionan `targetctl`, `settarget`, `showtarget`, `cleartarget`, `pentest-workspace`, `nmap-ports` y `doctor`. `targetctl` baja privilegios automáticamente al usuario del escritorio para compartir el mismo estado que Polybar.
+
+Los comandos gráficos `power-menu`, `launch-polybar` y `theme-switcher` deben ejecutarse como usuario normal. Ejecutar aplicaciones X11 como root queda deliberadamente bloqueado por separación de privilegios.
+
+La arquitectura, rutas administradas y límites de seguridad se describen en [docs/root-integration.md](docs/root-integration.md).
+
 ## Atajos de teclado
 
 `Super` es la tecla Windows. La configuración instalada incluye:

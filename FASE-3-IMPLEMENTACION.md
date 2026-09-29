@@ -13,13 +13,14 @@ Estado: implementación inicial completa; pendiente de validación sobre Parrot 
 - Backups, logs, manifiesto con checksum y bloqueo concurrente.
 - BSPWM, SXHKD, Polybar, Picom, Kitty, Rofi, Zsh y Neovim.
 - Powerlevel10k fijado y Oh My Zsh fijado a commit, ambos incluidos por el launcher completo.
+- Integración root-owned de Zsh/Powerlevel10k con target compartido mediante descenso explícito de privilegios.
 - Descarga verificada de JetBrainsMono Nerd Font.
 - Temas originales Nocturne y Daybreak.
 - Red, VPN genérica, batería condicional y target en Polybar.
 - `targetctl`, espacio pentest y extractor de puertos Nmap.
 - Desinstalación conservadora.
 - README, licencia MIT, terceros, seguridad y guías.
-- Pruebas de sintaxis, smoke, plataforma y target.
+- Pruebas de sintaxis, smoke, plataforma, target, rutas privilegiadas y simulación de la integración root.
 
 ## Validado en el host de desarrollo
 

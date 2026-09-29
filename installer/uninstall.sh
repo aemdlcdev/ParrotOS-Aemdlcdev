@@ -22,10 +22,21 @@ aem_main_uninstall() {
   fi
   local kind path checksum current
   while IFS=$'\t' read -r kind path checksum; do
-    if [[ $kind != package ]] && ! aem_user_path_allowed "$path"; then
-      aem_log warn "Entrada de manifiesto rechazada: $path"
-      continue
-    fi
+    case "$kind" in
+      system-file)
+        aem_system_file_path_allowed "$path" || { aem_log warn "Archivo de sistema rechazado: $path"; continue; }
+        ;;
+      system-shared-file)
+        aem_system_shared_path_allowed "$path" || { aem_log warn "Integración de sistema rechazada: $path"; continue; }
+        ;;
+      system-tree)
+        aem_system_tree_path_allowed "$path" || { aem_log warn "Árbol de sistema rechazado: $path"; continue; }
+        ;;
+      package) ;;
+      *)
+        aem_user_path_allowed "$path" || { aem_log warn "Entrada de manifiesto rechazada: $path"; continue; }
+        ;;
+    esac
     case "$kind" in
       file)
         if [[ -f $path || -L $path ]]; then
@@ -40,6 +51,22 @@ aem_main_uninstall() {
           mv -f -- "${path}.aem.$$" "$path"
           if [[ $(id -u) -eq 0 ]]; then chown "$AEM_UID:$AEM_GID" "$path"; fi
         fi
+        ;;
+      system-file)
+        if aem_as_root test -f "$path"; then
+          current=$(aem_as_root sha256sum "$path" | awk '{print $1}')
+          if [[ -n $checksum && $current == "$checksum" ]]; then aem_as_root rm -f -- "$path"; else aem_log warn "Conservado por cambios locales: $path"; fi
+        fi
+        ;;
+      system-shared-file)
+        if aem_as_root test -L "$path"; then
+          aem_log warn "Integración enlazada conservada: $path"
+        elif aem_as_root test -f "$path"; then
+          aem_as_root sed -i '/^# >>> aemdlc-environment >>>$/,/^# <<< aemdlc-environment <<<$/{d;}' "$path"
+        fi
+        ;;
+      system-tree)
+        aem_as_root rm -rf -- "$path"
         ;;
       package)
         aem_valid_package_name "$path" || { aem_log warn "Paquete inválido en manifiesto: $path"; continue; }

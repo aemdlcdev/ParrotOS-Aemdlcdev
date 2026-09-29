@@ -11,8 +11,8 @@ Este repositorio no relicencia los proyectos siguientes. El instalador los obtie
 | Kitty | https://sw.kovidgoyal.net/kitty/ | GPL-3.0-or-later | Terminal, paquete APT. |
 | Rofi | https://github.com/davatorium/rofi | MIT | Lanzadores y menús, paquete APT. |
 | Zsh | https://www.zsh.org/ | Licencia Zsh | Shell, paquete APT. |
-| Powerlevel10k | https://github.com/romkatv/powerlevel10k | MIT | Prompt, tag oficial fijado. |
-| Oh My Zsh | https://github.com/ohmyzsh/ohmyzsh | MIT | Integración instalada desde un commit oficial fijado. |
+| Powerlevel10k | https://github.com/romkatv/powerlevel10k | MIT | Prompt de usuario y root, obtenido por separado desde un tag oficial fijado. |
+| Oh My Zsh | https://github.com/ohmyzsh/ohmyzsh | MIT | Integración de usuario y root obtenida por separado desde un commit oficial fijado. |
 | Neovim | https://github.com/neovim/neovim | Apache-2.0 | Editor, paquete APT. |
 | fzf | https://github.com/junegunn/fzf | MIT | Búsqueda difusa, paquete APT. |
 | Flameshot | https://flameshot.org/ | GPL-3.0-or-later | Capturas, paquete APT. |
@@ -23,6 +23,7 @@ Este repositorio no relicencia los proyectos siguientes. El instalador los obtie
 | Nerd Fonts | https://github.com/ryanoasis/nerd-fonts | MIT y licencias de cada fuente/glifo | JetBrainsMono, Iosevka y Hack descargadas desde assets oficiales verificados. |
 | Feh | https://feh.finalrewind.org/ | MIT-feh | Fondo de escritorio, paquete APT. |
 | OpenVPN | https://openvpn.net/community/ | GPL-2.0-only con excepciones | Perfiles VPN del usuario, paquete APT. |
+| util-linux | https://github.com/util-linux/util-linux | GPL-2.0-or-later y licencias por utilidad | `runuser` para ejecutar `targetctl` con la identidad del usuario del escritorio. |
 | ImageMagick | https://imagemagick.org/ | ImageMagick License | Utilidad gráfica, paquete APT. |
 
 Las dependencias transitivas y los parches de Debian/Parrot se documentan en `/usr/share/doc/<paquete>/copyright` después de instalar cada paquete.

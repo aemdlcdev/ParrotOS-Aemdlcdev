@@ -2,6 +2,7 @@
 
 ## 0.1.0 — En desarrollo
 
+- Añadida una integración root reversible: Zsh/Powerlevel10k aislados, utilidades root-owned y estado target compartido sin escribirlo como root.
 - Corregido el botón de apagado de Polybar para mantener un diámetro de 40 px en cualquier relación de aspecto.
 - Corregida la geometría de las seis cápsulas de Polybar para 1920×1080, eliminando solapes y devolviendo el target al extremo derecho.
 - Alineado Kitty con las capturas de referencia: Hack Nerd Font 13, padding de 20 px, 85% de opacidad y paleta Tokyo Night.
